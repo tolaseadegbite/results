@@ -1,2 +1,14 @@
-<h1>Welcome to Jumpstart!</h1>
-<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+<% if current_user %>
+    <div class="jumbotron">
+        <h1 class="display-4">Hello, <%= current_user.name %></h1>
+        <p class="lead">Welcome to The Federal Polytechnic, Ado-Ekiti Facility Management System.</p>
+        <hr class="my-4">
+        <p></p>
+        <p class="lead">
+            Click the button below on visi the admin page
+            <%= link_to "Go-to Admin Panel", rails_admin_path, class: "btn btn-primary btn-sm" %>
+        </p>
+    </div>
+<% else %>
+    <%= link_to "Sign in", new_user_session_path %>
+<% end %>

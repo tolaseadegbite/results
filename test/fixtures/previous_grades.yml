@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tua: 1
+  tup: 1
+  twgp: 1
+  gpa: 1
+  tu: 1
+  result: one
+
+two:
+  tua: 1
+  tup: 1
+  twgp: 1
+  gpa: 1
+  tu: 1
+  result: two

@@ -1,0 +1,15 @@
+// app/assets/stylesheets/rails_admin/custom/variables.scss
+
+$primary: #d61fa5; // Colours nav bar, side links & primary buttons
+$info: #fbb6df; // Colours secondary buttons
+$danger: #4b0e54; // Colours part of boolean selector
+$warning: #b832ab;
+$success: #f687b3;
+
+
+// Force light color for top-nav links
+$navbar-dark-color: white;
+
+// Contrast ratio used to calculate color for text within elements (ie. buttons)
+// https://getbootstrap.com/docs/5.0/customize/sass/#color-contrast
+$min-contrast-ratio: 2;

@@ -1,0 +1,140 @@
+<h2>RESULTS</h2>
+<%= form_tag results_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", class: "btn btn-success" %>
+<% end %>
+
+<p><%= link_to "Advanced search", new_search_path %></p>
+<hr/>
+
+<% if @results.count > 0 %>
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-secondary">
+            <tr>
+            <th scope="col">S/N</th>
+            <th scope="col" colspan="2">Courses</th>
+            <% @results.each do |result| %>
+                <% result.courses.each do |course| %>
+                    <th><%= course.name %> <%= course.units %></th>
+                <% end %>
+            <% end %>
+            <th scope="col">Previous grades</th>
+            <th scope="col">Present grades</th>
+            <th scope="col">Cummulative grades</th>
+            <th scope="col">Overall Grading</th>
+            </tr>
+        </thead>
+        <thead class="table-secondary">
+            <tr>
+            <th scope="col">S/N</th>
+            <th scope="col">Matric number</th>
+            <th scope="col">Student names</th>
+            <th scope="col" colspan="8">Aggregate scores (%)</th>
+            <th scope="col">
+                <table class="table">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">TUA</th>
+                            <th scope="col">TUP</th>
+                            <th scope="col">TWGP</th>
+                            <th scope="col">GPA</th>
+                            <th scope="col">TU</th>
+                        </tr>
+                    </thead>
+                </table>
+            </th>
+            <th scope="col">
+                <table class="table">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">TUA</th>
+                            <th scope="col">TUP</th>
+                            <th scope="col">TWGP</th>
+                            <th scope="col">GPA</th>
+                            <th scope="col">TU</th>
+                        </tr>
+                    </thead>
+                </table>
+            </th>
+            <th scope="col">
+                <table class="table">
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">TUA</th>
+                            <th scope="col">TUP</th>
+                            <th scope="col">TWGP</th>
+                            <th scope="col">GPA</th>
+                            <th scope="col">TU</th>
+                        </tr>
+                    </thead>
+                </table>
+            </th>
+            <th scope="col">
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @results.each do |result| %>
+                <%= link_to '#' do %>
+                    <tr>
+                    <td><%= result.id %></td>
+                    <td><%= result.matric_no %></td>
+                    <td><%= result.student_name %></td>
+                    <% result.courses.each do |course| %>
+                        <td><%= course.score %></td>
+                    <% end %>
+                    <td>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <% result.previous_grades.each do |grade| %>
+                                        <td><%= grade.tua %></td>
+                                        <td><%= grade.tup %></td>
+                                        <td><%= grade.twgp %></td>
+                                        <td><%= grade.gpa %></td>
+                                        <td><%= grade.tu %></td>
+                                    <% end %>
+                                </tr>
+                            </thead>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <% result.present_grades.each do |grade| %>
+                                        <td><%= grade.tua %></td>
+                                        <td><%= grade.tup %></td>
+                                        <td><%= grade.twgp %></td>
+                                        <td><%= grade.gpa %></td>
+                                        <td><%= grade.tu %></td>
+                                    <% end %>
+                                </tr>
+                            </thead>
+                        </table>
+                    </td>
+                    <td>
+                        <table class="table">
+                            <thead class="nested-head">
+                                <tr>
+                                    <% result.cummulative_grades.each do |grade| %>
+                                        <td><%= grade.tua %></td>
+                                        <td><%= grade.tup %></td>
+                                        <td><%= grade.twgp %></td>
+                                        <td><%= grade.gpa %></td>
+                                        <td><%= grade.tu %></td>
+                                    <% end %>
+                                </tr>
+                            </thead>
+                        </table>
+                    </td>
+                    <td><%= result.overall_grading %></td>
+                    </tr>
+                <% end %>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <h4>There is no record</h4>
+<% end %>

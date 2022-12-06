@@ -1,0 +1,20 @@
+table.table.table-bordered.table-hover {
+    font-size: 12px;
+    table.table  {
+       font-size: 12px;
+   }
+   .table > :not(caption) > * > * {
+        padding: 0;
+    }
+    // thead {
+    //     border-bottom: transparent;
+    // }
+}
+
+table.table > table.table.nested-head {
+    border-bottom: transparent;
+}
+
+select {
+    width: 100%;
+}
